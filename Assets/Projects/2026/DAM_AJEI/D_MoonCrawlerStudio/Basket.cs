@@ -11,7 +11,7 @@ namespace EntilandVR.DosCinco.DAM_AJEI.D_MoonCrawlerStudio
             Verde,
             Azul
         }
-        public BetController betController;
+        public G_MoonCrawlerStudio.BetController betController;
         public ColorApuesta color;
 
         private void OnTriggerEnter(Collider other)

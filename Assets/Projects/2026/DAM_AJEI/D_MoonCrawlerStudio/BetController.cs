@@ -1,4 +1,3 @@
-using System.Drawing;
 using TMPro;
 using UnityEngine;
 
@@ -9,24 +8,16 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_MoonCrawlerStudio
         public int puntosRojos;
         public int puntosVerdes;
         public int puntosAzules;
+
+        public int puntosTotales;
+
         public TMP_Text textoRojo;
         public TMP_Text textoVerde;
         public TMP_Text textoAzul;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        public TMP_Text textoPuntosTotales;
 
         public void ChangeBet(int p, string c)
         {
-
             switch (c)
             {
                 case "Rojo":
@@ -48,9 +39,38 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_MoonCrawlerStudio
                     Debug.Log("Color desconocido");
                     break;
             }
+        }
 
+        public void ResolveBet(string colorGanador)
+        {
+            int recompensa = 0;
+
+            switch (colorGanador)
+            {
+                case "Rojo":
+                    recompensa = puntosRojos * 3;
+                    break;
+
+                case "Verde":
+                    recompensa = puntosVerdes * 3;
+                    break;
+
+                case "Azul":
+                    recompensa = puntosAzules * 3;
+                    break;
+            }
+
+            puntosTotales += recompensa;
+            textoPuntosTotales.text = puntosTotales.ToString();
+
+            // Reset apuestas
+            puntosRojos = 0;
+            puntosVerdes = 0;
+            puntosAzules = 0;
+
+            textoRojo.text = "0";
+            textoVerde.text = "0";
+            textoAzul.text = "0";
         }
     }
 }
-
-    

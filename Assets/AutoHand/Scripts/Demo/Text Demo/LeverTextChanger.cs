@@ -9,9 +9,14 @@ namespace Autohand.Demo{
         public PhysicsGadgetHingeAngleReader sliderReader;
 
         float lastValue = 0;
-        void Update(){
+
+        public float LastValue => lastValue;
+
+        void Update()
+        {
             var value = sliderReader.GetValue();
-            if(value != lastValue) {
+            if (value != lastValue)
+            {
                 lastValue = value;
                 text.text = Math.Round(value, 2).ToString();
             }
