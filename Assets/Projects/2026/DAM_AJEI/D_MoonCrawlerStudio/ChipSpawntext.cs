@@ -24,18 +24,22 @@ public class ChipSpawntext : MonoBehaviour
             timer = 0f;
 
             float sliderValue = sliderReader.GetValue();
-            int resultado = Mathf.RoundToInt(sliderValue);
-            if (value > betController.puntosTotales)
-            {
-                return;
-            }
-            value += resultado;
 
-            // evitar que sea menor que 0
-            if (value < 0)
-                value = 0;
+            sliderValue = sliderValue * 50;
+            // Sumar o restar directamente (puede ser negativo)
+            value += sliderValue;
 
-            text.text = Math.Round(value, 2).ToString();
+            // Limitar el total entre 0 y los puntos disponibles
+            value = Mathf.Clamp(value, 0, betController.puntosTotales);
+
+            // Mostrar el valor
+            text.text = Mathf.Round(value).ToString();
         }
+    }
+
+    public void ResetValue()
+    {
+        value = 0f;
+        text.text = "0";
     }
 }

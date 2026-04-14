@@ -70,7 +70,7 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_MoonCrawlerStudio
 
             puntosTotales += recompensa;
             textoPuntosTotales.text = puntosTotales.ToString();
-            if (puntosTotales > 0)
+            if (puntosTotales <= 0)
             {
                 loseScreen.SetActive(true);
             }
