@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,13 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_MoonCrawlerStudio
         public TMP_Text textoVerde;
         public TMP_Text textoAzul;
         public TMP_Text textoPuntosTotales;
+
+        public GameObject loseScreen;
+
+        private void Start()
+        {
+            loseScreen.SetActive(false);
+        }
 
         public void ChangeBet(int p, string c)
         {
@@ -62,6 +70,10 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_MoonCrawlerStudio
 
             puntosTotales += recompensa;
             textoPuntosTotales.text = puntosTotales.ToString();
+            if (puntosTotales > 0)
+            {
+                loseScreen.SetActive(true);
+            }
 
             // Reset apuestas
             puntosRojos = 0;
